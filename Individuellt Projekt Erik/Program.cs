@@ -53,6 +53,7 @@ namespace Individuellt_Projekt_Erik
                             switch (menu)//switch för olika menyval
                             {
                                 case 1:
+                                    case1(Users, TargetIndex);
                                     break;
                                 case 2:
                                     break;
@@ -112,7 +113,7 @@ namespace Individuellt_Projekt_Erik
             Console.WriteLine("[4] Sätt in pengar");
             Console.WriteLine("[5] Logga ut");
         }
-        public static bool inLogg(accounts[] Users, ref int x, ref bool loggedout)//klar
+        public static bool inLogg(accounts[] Users, ref int x, ref bool loggedout)//metof för inloggning
         {
             for (int i = 0; i < 3; i++) //loop för att ge användare 3 försök att logga in.
             {
@@ -145,6 +146,24 @@ namespace Individuellt_Projekt_Erik
             loggedout = false;
             return false;   //om 3 felaktiga försöka matats in, programmet stänger.
         }
+        public static void case1(accounts[] Users, int case1)//metod för visning av saldon på bankkonton
+        {
+            Console.Clear();
+            Console.WriteLine("Se dina konton och saldon:");
+            Console.WriteLine("Saldo för Lönekonto är : " + Users[case1].amount1 + " sek");//skriver ut saldo för konto 1
+            if (Users[case1].amount2 != 0)//kollar om det finns värde i konto 2. skriver ut om det finns.
+            {
+                Console.WriteLine("Saldo för sparkonto är : " + Users[case1].amount2 + " sek"); 
+            }
+            if (Users[case1].amount3 != 0)//kollar om det finns värde i konto 3. skriver ut om det finns.
+            {
+                Console.WriteLine("Saldo för Investeringskonto är : " + Users[case1].amount3 + " sek");
+            }
+
+            Console.Write("Tryck enter för att komma till huvudmenyn: ");
+            Console.ReadKey();
+            Console.Clear();
+        } //klar
 
 
     }
