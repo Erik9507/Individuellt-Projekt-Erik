@@ -258,7 +258,48 @@ namespace Individuellt_Projekt_Erik
                 Console.ReadKey();
                 Console.Clear();
             }
-        } 
-
+        }
+        public static void case4(accounts[] Users, int case4)//metod för insätting av pengar
+        {
+            Console.Clear();
+            Console.WriteLine("Sätt in pengar.");
+            Console.WriteLine("1: Lönekonto: " + Users[case4].amount1 + " kr");//skriver ut tillgänglika konton
+            if (Users[case4].amount2 != 0)
+            {
+                Console.WriteLine("2: Sparkonto: " + Users[case4].amount2 + " kr");//skriver ut tillgänglika konton
+            }
+            if (Users[case4].amount3 != 0)
+            {
+                Console.WriteLine("3: investeringskonto: " + Users[case4].amount3 + " kr");//skriver ut tillgänglika konton
+            }
+            Console.WriteLine();
+            Console.Write("Välj vilket konto du vill sätta in pengar på?: ");
+            string input1 = Console.ReadLine();//användare får välja konto att sätta in pengar på.
+            Console.WriteLine("Hur mycket vill du sätta in?");
+            double deposit = Int32.Parse(Console.ReadLine());//användaren får välja hur mycket pengar som ska sätta in.
+            Console.Write("Vänligen bekräfta med löseord: ");
+            string Confirm = Console.ReadLine();
+            if (Confirm == Users[case4].password)//användaren får bekrätfra med lösenord, kontroll om lösneord stämmer.
+            {
+                if (input1 == "1")
+                {
+                    Users[case4].amount1 = Users[case4].amount1 + deposit;//justerar saldo för valt konto
+                    Console.WriteLine("insättningen lyckades, saldo är nu: " + Users[case4].amount1);
+                }
+                else if (input1 == "2")
+                {
+                    Users[case4].amount2 = Users[case4].amount2 + deposit;//justerar saldo för valt konto
+                    Console.WriteLine("insättningen lyckades, saldo är nu: " + Users[case4].amount2);
+                }
+                else if (input1 == "3")
+                {
+                    Users[case4].amount3 = Users[case4].amount3 + deposit;//justerar saldo för valt konto
+                    Console.WriteLine("insättningen lyckades, saldo är nu: " + Users[case4].amount3);
+                }
+                Console.WriteLine("Tryck enter för att komma till huvudmenyn");
+                Console.ReadKey();
+                Console.Clear();
+            }
+        } //klar
     }
 }
