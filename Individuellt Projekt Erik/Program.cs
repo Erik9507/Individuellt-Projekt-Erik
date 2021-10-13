@@ -46,37 +46,33 @@ namespace Individuellt_Projekt_Erik
                     while (Bank)
                     {
                         myMenu();//hämtar metoden för menyval
-                        int menu;
-                        bool Menu1 = int.TryParse(Console.ReadLine(), out menu);
-                        if (Menu1)
+                        string Menu1 = Console.ReadLine();
+
+                        switch (Menu1)//switch för olika menyval
                         {
-                            switch (menu)//switch för olika menyval
-                            {
-                                case 1:
-                                    case1(Users, TargetIndex);
-                                    break;
-                                case 2:
-                                    case2(Users, TargetIndex);
-                                    break;
-                                case 3:
-                                    case3(Users, TargetIndex);
-                                    break;
-                                case 4:
-                                    
-                                    break;
-                                case 5:
-                                    Console.WriteLine("Loggas ut......");
-                                    int mydelay = 2000;
-                                    Thread.Sleep(mydelay);
-                                    Console.Clear();
-                                    Bank = false;
-                                    loggedout = true;
-                                    break;
-                            }
-                        }
-                        else
-                        {
-                            Console.WriteLine("Vänligen välj alternativ 1 - 4");
+                            case "1":
+                                case1(Users, TargetIndex);
+                                break;
+                            case "2":
+                                case2(Users, TargetIndex);
+                                break;
+                            case "3":
+                                case3(Users, TargetIndex);
+                                break;
+                            case "4":
+
+                                break;
+                            case "5":
+                                Console.WriteLine("Loggas ut......");
+                                int mydelay = 2000;
+                                Thread.Sleep(mydelay);
+                                Console.Clear();
+                                Bank = false;
+                                loggedout = true;
+                                break;
+                            default:
+                                Console.WriteLine("Vänligen välj alternativ 1 - 4");
+                                break;
                         }
                     }
                 }
@@ -155,7 +151,7 @@ namespace Individuellt_Projekt_Erik
             Console.WriteLine("Saldo för Lönekonto är : " + Users[case1].amount1 + " sek");//skriver ut saldo för konto 1
             if (Users[case1].amount2 != 0)//kollar om det finns värde i konto 2. skriver ut om det finns.
             {
-                Console.WriteLine("Saldo för sparkonto är : " + Users[case1].amount2 + " sek"); 
+                Console.WriteLine("Saldo för sparkonto är : " + Users[case1].amount2 + " sek");
             }
             if (Users[case1].amount3 != 0)//kollar om det finns värde i konto 3. skriver ut om det finns.
             {
@@ -178,7 +174,7 @@ namespace Individuellt_Projekt_Erik
             if (Users[case2].amount3 != 0)
             {
                 Console.WriteLine("3: investeringskonto: " + Users[case2].amount3 + " kr");
-            }       
+            }
             Console.WriteLine();
             Console.Write("Välj vilket konto du vill föra över ifrån: ");
             string input1 = Console.ReadLine();
