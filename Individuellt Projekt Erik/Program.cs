@@ -56,8 +56,10 @@ namespace Individuellt_Projekt_Erik
                                     case1(Users, TargetIndex);
                                     break;
                                 case 2:
+                                    case2(Users, TargetIndex);
                                     break;
                                 case 3:
+                                    case3(Users, TargetIndex);
                                     break;
                                 case 4:
                                     
@@ -215,7 +217,48 @@ namespace Individuellt_Projekt_Erik
                 Console.WriteLine("Överföringen lyckades!");
             }
         }
-
+        public static void case3(accounts[] Users, int case3)//metod för uttag av pengar
+        {
+            Console.Clear();
+            Console.WriteLine("Ta ut pengar.");
+            Console.WriteLine("1: Lönekonto: " + Users[case3].amount1 + " kr");
+            if (Users[case3].amount2 != 0)
+            {
+                Console.WriteLine("2: Sparkonto: " + Users[case3].amount2 + " kr");
+            }
+            if (Users[case3].amount3 != 0)
+            {
+                Console.WriteLine("3: investeringskonto: " + Users[case3].amount3 + " kr");
+            }
+            Console.WriteLine();
+            Console.Write("Välj vilket konto du vill ta ut ifrån: ");
+            string input1 = Console.ReadLine();//låter användre välja konto att ta ut pengar från
+            Console.WriteLine("Hur mycket vill du ta ut?");
+            double draw = Int32.Parse(Console.ReadLine());//låter användare välja hur mycket som ska tas ut
+            Console.Write("Vänligen bekräfta med löseord: ");
+            string Confirm = Console.ReadLine();//Användare får bekräfta med lösenord.
+            if (Confirm == Users[case3].password)
+            {
+                if (input1 == "1")//justerar salod för valt konto.
+                {
+                    Users[case3].amount1 = Users[case3].amount1 - draw;
+                    Console.WriteLine("Överföringen lyckades, saldo är nu: " + Users[case3].amount1);
+                }
+                else if (input1 == "2")
+                {
+                    Users[case3].amount2 = Users[case3].amount2 - draw;
+                    Console.WriteLine("Överföringen lyckades, saldo är nu: " + Users[case3].amount2);
+                }
+                else if (input1 == "3")
+                {
+                    Users[case3].amount3 = Users[case3].amount3 - draw;
+                    Console.WriteLine("Överföringen lyckades, saldo är nu: " + Users[case3].amount3);
+                }
+                Console.WriteLine("Tryck enter för att komma till huvudmenyn");
+                Console.ReadKey();
+                Console.Clear();
+            }
+        } 
 
     }
 }
