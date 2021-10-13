@@ -3,7 +3,7 @@ using System.Threading;
 
 namespace Individuellt_Projekt_Erik
 {
-    public class accounts
+    public class accounts   //klass för bankkonto, variablar för användarnamn, lösenord, och 3st bankkonton
     {
         public string username;
         public string password;
@@ -23,7 +23,7 @@ namespace Individuellt_Projekt_Erik
     {
         static void Main(string[] args)
         {
-            var Users = new accounts[]
+            var Users = new accounts[]  //Tilldelat värden för alla användare
             {
                 new accounts("Erik", "erik1", 100.00),
                 new accounts("Lukas", "lukas1", 50.20, 500.40),
@@ -34,23 +34,23 @@ namespace Individuellt_Projekt_Erik
             bool loggedout = true;
             while (loggedout)
             {
-                Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "Välkommen till Eriks bank"));
+                Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "Välkommen till Eriks bank"));//centrerar texten i konsollen
                 int TargetIndex = 0;
                 Console.WriteLine("[1] Logga in.");
                 Console.WriteLine("[2] Skapa nytt konto.");
                 int mainMenu;
                 int.TryParse(Console.ReadLine(), out mainMenu);
-                if (mainMenu == 1)
+                if (mainMenu == 1)  //if sats för huvudmeny val
                 {
                     bool Bank = inLogg(Users, ref TargetIndex, ref loggedout);
                     while (Bank)
                     {
-                        myMenu();
+                        myMenu();//hämtar metoden för menyval
                         int menu;
                         bool Menu1 = int.TryParse(Console.ReadLine(), out menu);
                         if (Menu1)
                         {
-                            switch (menu)
+                            switch (menu)//switch för olika menyval
                             {
                                 case 1:
                                     break;
@@ -89,7 +89,7 @@ namespace Individuellt_Projekt_Erik
                     Console.Write("Vänligen ange saldo för sparkonto: ");
                     double newAmount2 = Convert.ToDouble(Console.ReadLine());
                     Array.Resize(ref Users, Users.Length + 1);
-                    Users[Users.Length - 1] = new accounts(newUsername, newPassword, newAmount1, newAmount2);
+                    Users[Users.Length - 1] = new accounts(newUsername, newPassword, newAmount1, newAmount2);   //registerar nya värden för en ny användare i Accounts.
                     Console.WriteLine("Nytt konto registererat.");
                     Console.WriteLine("Välkommen " + newUsername);
                     Console.ReadKey();
@@ -103,9 +103,7 @@ namespace Individuellt_Projekt_Erik
                 }
             }
         }
-
-
-        public static void myMenu()
+        public static void myMenu()//metod för menyval
         {
             Console.WriteLine();
             Console.WriteLine("[1] Se dina konton och saldo");
@@ -116,7 +114,7 @@ namespace Individuellt_Projekt_Erik
         }
         public static bool inLogg(accounts[] Users, ref int x, ref bool loggedout)//klar
         {
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 3; i++) //loop för att ge användare 3 försök att logga in.
             {
                 Console.WriteLine();
                 Console.Write("Vänligen skriv in ditt användarnamn: ");
@@ -126,9 +124,9 @@ namespace Individuellt_Projekt_Erik
                 Console.Clear();
                 Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "Välkommen till Eriks bank"));
 
-                for (int j = 0; j < Users.Length; j++)
+                for (int j = 0; j < Users.Length; j++)  //loopar igenom alla existernade användare.
                 {
-                    if (username == Users[j].username && password == Users[j].password)
+                    if (username == Users[j].username && password == Users[j].password) //kontrollerar om inmatning för inloggning stämmer med en existerande användare.
                     {
 
                         Console.WriteLine("Loggar in...");
@@ -145,7 +143,7 @@ namespace Individuellt_Projekt_Erik
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("För många försök, Konto spärrat", Console.ForegroundColor);
             loggedout = false;
-            return false;
+            return false;   //om 3 felaktiga försöka matats in, programmet stänger.
         }
 
 
