@@ -163,7 +163,58 @@ namespace Individuellt_Projekt_Erik
             Console.Write("Tryck enter för att komma till huvudmenyn: ");
             Console.ReadKey();
             Console.Clear();
-        } //klar
+        }
+        public static void case2(accounts[] Users, int case2)//Metof för överföring mellan konton
+        {
+            Console.Clear();
+            Console.WriteLine("Överföring mellan konton.");
+            Console.WriteLine("1: Lönekonto: " + Users[case2].amount1 + " kr");
+            if (Users[case2].amount2 != 0)  //skriver ut de bankkonton med värde och låter användaren välja konto att flytta från
+            {
+                Console.WriteLine("2: Sparkonto: " + Users[case2].amount2 + " kr");
+            }
+            if (Users[case2].amount3 != 0)
+            {
+                Console.WriteLine("3: investeringskonto: " + Users[case2].amount3 + " kr");
+            }       
+            Console.WriteLine();
+            Console.Write("Välj vilket konto du vill föra över ifrån: ");
+            string input1 = Console.ReadLine();
+            Console.WriteLine("Hur mycket vill du flytta?");
+            double transfer = Int32.Parse(Console.ReadLine());  //användaren får välja hur mycket som ska flyttas
+
+            if (input1 == "1")
+            {
+                Users[case2].amount1 = Users[case2].amount1 - transfer;
+            }
+            else if (input1 == "2")
+            {
+                Users[case2].amount2 = Users[case2].amount2 - transfer;
+            }
+            else if (input1 == "3")
+            {
+                Users[case2].amount3 = Users[case2].amount3 - transfer;
+            }
+
+            Console.WriteLine("Välj vilket konto du vill föra över till");//låter användaren välja vilket konto att flytta till.
+            string input2 = Console.ReadLine();
+            if (input2 == "1")
+            {
+                Users[case2].amount1 = Users[case2].amount1 + transfer;
+                Console.WriteLine("Överföringen lyckades!");
+
+            }
+            else if (input2 == "2")
+            {
+                Users[case2].amount2 = Users[case2].amount2 + transfer;
+                Console.WriteLine("Överföringen lyckades!");
+            }
+            else if (input2 == "3")
+            {
+                Users[case2].amount3 = Users[case2].amount3 + transfer;
+                Console.WriteLine("Överföringen lyckades!");
+            }
+        }
 
 
     }
