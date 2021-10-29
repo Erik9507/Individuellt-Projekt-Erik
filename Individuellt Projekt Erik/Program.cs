@@ -51,16 +51,16 @@ namespace Individuellt_Projekt_Erik
                         switch (Menu1)//switch för olika menyval
                         {
                             case "1":
-                                case1(Users, TargetIndex);
+                                displayAccount(Users, TargetIndex);
                                 break;
                             case "2":
-                                case2(Users, TargetIndex);
+                                transferMoney(Users, TargetIndex);
                                 break;
                             case "3":
-                                case3(Users, TargetIndex);
+                                withdrawMoney(Users, TargetIndex);
                                 break;
                             case "4":
-
+                                putMoneyIn(Users, TargetIndex);
                                 break;
                             case "5":
                                 Console.WriteLine("Loggas ut......");
@@ -101,7 +101,7 @@ namespace Individuellt_Projekt_Erik
                     Console.Clear();
                 }
             }
-        }
+        }//klar
         public static void myMenu()//metod för menyval
         {
             Console.WriteLine();
@@ -110,7 +110,7 @@ namespace Individuellt_Projekt_Erik
             Console.WriteLine("[3] Ta ut pengar");
             Console.WriteLine("[4] Sätt in pengar");
             Console.WriteLine("[5] Logga ut");
-        }
+        }//klar
         public static bool inLogg(accounts[] Users, ref int x, ref bool loggedout)//metof för inloggning
         {
             for (int i = 0; i < 3; i++) //loop för att ge användare 3 försök att logga in.
@@ -143,8 +143,8 @@ namespace Individuellt_Projekt_Erik
             Console.WriteLine("För många försök, Konto spärrat", Console.ForegroundColor);
             loggedout = false;
             return false;   //om 3 felaktiga försöka matats in, programmet stänger.
-        }
-        public static void case1(accounts[] Users, int case1)//metod för visning av saldon på bankkonton
+        }//klar
+        public static void displayAccount(accounts[] Users, int case1)//metod för visning av saldon på bankkonton
         {
             Console.Clear();
             Console.WriteLine("Se dina konton och saldon:");
@@ -161,8 +161,8 @@ namespace Individuellt_Projekt_Erik
             Console.Write("Tryck enter för att komma till huvudmenyn: ");
             Console.ReadKey();
             Console.Clear();
-        }
-        public static void case2(accounts[] Users, int case2)//Metof för överföring mellan konton
+        }//klar
+        public static void transferMoney(accounts[] Users, int case2)//Metof för överföring mellan konton
         {
             Console.Clear();
             Console.WriteLine("Överföring mellan konton.");
@@ -212,8 +212,8 @@ namespace Individuellt_Projekt_Erik
                 Users[case2].amount3 = Users[case2].amount3 + transfer;
                 Console.WriteLine("Överföringen lyckades!");
             }
-        }
-        public static void case3(accounts[] Users, int case3)//metod för uttag av pengar
+        }//klar
+        public static void withdrawMoney(accounts[] Users, int case3)//metod för uttag av pengar
         {
             Console.Clear();
             Console.WriteLine("Ta ut pengar.");
@@ -254,8 +254,8 @@ namespace Individuellt_Projekt_Erik
                 Console.ReadKey();
                 Console.Clear();
             }
-        }
-        public static void case4(accounts[] Users, int case4)//metod för insätting av pengar
+        }//klar
+        public static void putMoneyIn(accounts[] Users, int case4)//metod för insätting av pengar
         {
             Console.Clear();
             Console.WriteLine("Sätt in pengar.");
