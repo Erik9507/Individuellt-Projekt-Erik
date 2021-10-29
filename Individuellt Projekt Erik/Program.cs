@@ -101,7 +101,7 @@ namespace Individuellt_Projekt_Erik
                     Console.Clear();
                 }
             }
-        }//klar
+        }//klar 
         public static void myMenu()//metod för menyval
         {
             Console.WriteLine();
